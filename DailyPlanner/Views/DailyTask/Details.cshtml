@@ -1,0 +1,38 @@
+@model DailyPlanner.Models.DailyTask
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Activity</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">@Model.Comment</div>
+    
+    <div class="display-label">Date</div>
+    <div class="display-field">@Model.Date</div>
+
+    <div class="display-label">Start time</div>
+    <div class="display-field">@Model.StartTime</div>
+
+    <div class="display-label">Duration</div>
+    <div class="display-field">@Model.Duration</div>
+
+    
+
+    <div class="display-label">ActivityType</div>
+    <div class="display-field">@(Model.Activity == null ? "None" : Model.Activity.Name)</div>
+
+ </fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

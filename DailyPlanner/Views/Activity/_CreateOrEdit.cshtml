@@ -1,0 +1,102 @@
+@using DailyPlanner.Models
+@model DailyPlanner.Models.Activity
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Description)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Description)
+    @Html.ValidationMessageFor(model => model.Description)
+</div>
+
+<div class="editor-label">
+    Activity type
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.ActivityTypeId, ((IEnumerable<DailyPlanner.Models.ActivityType>)ViewBag.PossibleActivityTypes).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.ActivityTypeId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.ActivityTypeId)
+</div>
+
+<div class="editor-label">
+    Toys
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <table>
+            <tr>
+            @{
+                int cnt = 0;
+                List<Toy> possibleToys = ViewBag.PossibleToys;
+
+                foreach (var toy in possibleToys)
+                {
+                    var toyName = toy.Name;
+                        
+                    if (cnt++ % 3 == 0)
+                    {
+                        @:</tr><tr>
+                    }
+                    @:<td>
+                    <input type="checkbox"
+                           name="selectedToys"
+                           value="@toy.Id"
+                        @Html.Raw(Model.Toys.Count(p => p.Name == toyName) != 0 ? "checked=\"checked\"" : "") />
+                    @toy.Id @:  @toy.Name
+                    @:</td>
+                }
+                @:</tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+<div class="editor-label">
+    Flashcards
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <table>
+            <tr>
+                @{
+                    int cnt2 = 0;
+                    List<Flashcard> possibleFlashcardsList = ViewBag.PossibleFlashcards;
+
+                    foreach (var flashcard in possibleFlashcardsList)
+                    {
+                        var flashcardName = flashcard.Name;
+
+                        if (cnt2++ % 3 == 0)
+                        {
+                            @:</tr><tr>
+                                }
+                                @:<td>
+                                    <input type="checkbox"
+                                           name="selectedFlashcards"
+                                           value="@flashcard.Id"
+                                           @Html.Raw(Model.Flashcards.Count(p => p.Name == flashcardName) != 0 ? "checked=\"checked\"" : "") />
+                                    @flashcard.Id @:  @flashcard.Name
+                                    @:</td>
+                        }
+                        @:</tr>
+                }
+            </table>
+        </div>
+    </div>
+
+
+

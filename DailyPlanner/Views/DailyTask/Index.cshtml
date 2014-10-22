@@ -1,0 +1,66 @@
+@model IEnumerable<DailyPlanner.Models.DailyTask>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Comment
+        </th>
+        <th>
+            Start time
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Date
+        </th>
+
+        <th>
+            ActivityType
+        </th>       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+            @item.Comment
+        </td>
+        <td>
+            @item.StartTime
+        </td>
+        <td>
+            @item.Duration
+        </td>
+        <td>
+            @item.Date
+        </td>
+        <td>
+			@(item.Activity == null ? "None" : item.Activity.Name)
+        </td>        
+    </tr>
+}
+
+</table>
+
+
