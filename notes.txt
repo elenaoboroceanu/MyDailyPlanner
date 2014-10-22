@@ -1,0 +1,163 @@
+Each package is licensed to you by its owner. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages. Some packages may include dependencies which are governed by additional licenses. Follow the package source (feed) URL to determine any dependencies.
+
+Package Manager Console Host Version 2.8.50313.46
+
+Type 'get-help NuGet' to see all available NuGet commands.
+
+PM> Install-Package EntityFramework.SqlServerCompact
+
+PM> Install-package mvcscaffolding
+
+PM> Scaffold Controller -ModelType ActivityType ControllerName ActivityTypesController -DbContextType TasksDbContext -Repository
+Scaffolding ControllerNameController...
+Get-ProjectType : Cannot find a type matching the name 'DailyPlanner.Models.TasksDbContext'. Try specifying the fully-qualified type name, 
+including namespace.
+At C:\Elena nou\Serv\aspnet mvc\Guestbook\DailyPlanner\packages\T4Scaffolding.1.0.8\tools\EFDbContext\T4Scaffolding.EFDbContext.ps1:45 char:24
++     $foundDbContextType = Get-ProjectType ($dbContextNamespace + "." + $DbContextTy ...
++                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-ProjectType], InvalidOperationException
+    + FullyQualifiedErrorId : T4Scaffolding.Cmdlets.GetProjectTypeCmdlet
+ 
+Scaffold : Created database context TasksDbContext, but could not find it as a project item
+At C:\Elena nou\Serv\aspnet mvc\Guestbook\DailyPlanner\packages\T4Scaffolding.1.0.8\tools\EFRepository\T4Scaffolding.EFRepository.ps1:35 
+char:31
++     $dbContextScaffolderResult = Scaffold DbContext -ModelType $ModelType -DbContex ...
++    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Invoke-Scaffolder], RuntimeException
+    + FullyQualifiedErrorId : T4Scaffolding.Cmdlets.InvokeScaffolderCmdlet
+ 
+Get-ProjectType : Cannot find a type matching the name 'TasksDbContext'. Try specifying the fully-qualified type name, including namespace.
+At C:\Elena nou\Serv\aspnet mvc\Guestbook\DailyPlanner\packages\MvcScaffolding.1.0.9\tools\Controller\MvcScaffolding.Controller.ps1:68 char:51
++ if (!$foundDbContextType) { $foundDbContextType = Get-ProjectType $DbContextType ...
++                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-ProjectType], InvalidOperationException
+    + FullyQualifiedErrorId : T4Scaffolding.Cmdlets.GetProjectTypeCmdlet
+ 
+PM> Scaffold Controller -ModelType ActivityType -ControllerName ActivityTypesController -DbContextType ActivityTypesDbContext -Repository 
+
+Scaffolding ActivityTypesController...
+Added database context 'Models\ActivityTypesDbContext.cs'
+Added 'ActivityTypes' to database context 'DailyPlanner.Models.ActivityTypesDbContext'
+Added repository 'Models\ActivityTypeRepository.cs'
+Controllers\ActivityTypesController.cs already exists! Pass -Force to overwrite. Skipping...
+Views\ActivityTypes\Create.cshtml already exists! Pass -Force to overwrite. Skipping...
+Views\ActivityTypes\Edit.cshtml already exists! Pass -Force to overwrite. Skipping...
+Views\ActivityTypes\Delete.cshtml already exists! Pass -Force to overwrite. Skipping...
+Views\ActivityTypes\Details.cshtml already exists! Pass -Force to overwrite. Skipping...
+Views\ActivityTypes\Index.cshtml already exists! Pass -Force to overwrite. Skipping...
+Added _CreateOrEdit view at 'Views\ActivityTypes\_CreateOrEdit.cshtml'
+
+PM> Scaffold Controller -ModelType ActivityType -ControllerName ActivityTypeController -DbContextType ActivityTypesDbContext -Repository -Force
+Scaffolding ActivityTypeController...
+ActivityTypesDbContext already has a member called 'ActivityTypes'. Skipping...
+Added repository 'Models\ActivityTypeRepository.cs'
+Added controller Controllers\ActivityTypeController.cs
+Added Create view at 'Views\ActivityType\Create.cshtml'
+Added Edit view at 'Views\ActivityType\Edit.cshtml'
+Added Delete view at 'Views\ActivityType\Delete.cshtml'
+Added Details view at 'Views\ActivityType\Details.cshtml'
+Added Index view at 'Views\ActivityType\Index.cshtml'
+Added _CreateOrEdit view at 'Views\ActivityType\_CreateOrEdit.cshtml'
+
+PM> Scaffold Controller -ModelType ToyType -ControllerName ToyTypeController -DbContextType ToyTypesDbContext -Repository -Force
+Scaffolding ToyTypeController...
+Added database context 'Models\ToyTypesDbContext.cs'
+Added 'ToyTypes' to database context 'DailyPlanner.Models.ToyTypesDbContext'
+Added repository 'Models\ToyTypeRepository.cs'
+Added controller Controllers\ToyTypeController.cs
+Added Create view at 'Views\ToyType\Create.cshtml'
+Added Edit view at 'Views\ToyType\Edit.cshtml'
+Added Delete view at 'Views\ToyType\Delete.cshtml'
+Added Details view at 'Views\ToyType\Details.cshtml'
+Added Index view at 'Views\ToyType\Index.cshtml'
+Added _CreateOrEdit view at 'Views\ToyType\_CreateOrEdit.cshtml'
+PM> Scaffold Controller -ModelType ActivityType -ControllerName ActivityTypeController -DbContextType ActivityTypeDbContext -Repository -Force
+Scaffolding ActivityTypeController...
+Added database context 'Models\ActivityTypeDbContext.cs'
+Added 'ActivityTypes' to database context 'DailyPlanner.Models.ActivityTypeDbContext'
+Added repository 'Models\ActivityTypeRepository.cs'
+Added controller Controllers\ActivityTypeController.cs
+Added Create view at 'Views\ActivityType\Create.cshtml'
+Added Edit view at 'Views\ActivityType\Edit.cshtml'
+Added Delete view at 'Views\ActivityType\Delete.cshtml'
+Added Details view at 'Views\ActivityType\Details.cshtml'
+Added Index view at 'Views\ActivityType\Index.cshtml'
+Added _CreateOrEdit view at 'Views\ActivityType\_CreateOrEdit.cshtml'
+PM> Scaffold Controller -ModelType ActivityType -ControllerName ActivityTypeController -DbContextType DailyPlannerDbContext -Repository -Force
+Scaffolding ActivityTypeController...
+Added database context 'Models\DailyPlannerDbContext.cs'
+Added 'ActivityTypes' to database context 'DailyPlanner.Models.DailyPlannerDbContext'
+Added repository 'Models\ActivityTypeRepository.cs'
+Added controller Controllers\ActivityTypeController.cs
+Added Create view at 'Views\ActivityType\Create.cshtml'
+Added Edit view at 'Views\ActivityType\Edit.cshtml'
+Added Delete view at 'Views\ActivityType\Delete.cshtml'
+Added Details view at 'Views\ActivityType\Details.cshtml'
+Added Index view at 'Views\ActivityType\Index.cshtml'
+Added _CreateOrEdit view at 'Views\ActivityType\_CreateOrEdit.cshtml'
+PM> Scaffold Controller -ModelType ToyType -ControllerName ToyTypeController -DbContextType DailyPlannerDbContext -Repository -Force
+Scaffolding ToyTypeController...
+Added 'ToyTypes' to database context 'DailyPlanner.Models.DailyPlannerDbContext'
+Added repository 'Models\ToyTypeRepository.cs'
+Added controller Controllers\ToyTypeController.cs
+Added Create view at 'Views\ToyType\Create.cshtml'
+Added Edit view at 'Views\ToyType\Edit.cshtml'
+Added Delete view at 'Views\ToyType\Delete.cshtml'
+Added Details view at 'Views\ToyType\Details.cshtml'
+Added Index view at 'Views\ToyType\Index.cshtml'
+Added _CreateOrEdit view at 'Views\ToyType\_CreateOrEdit.cshtml'
+
+PM> Scaffold Controller -ModelType FlashcardType -ControllerName FlashcardTypeController -DbContextType DailyPlannerDbContext -Repository -Force
+Scaffolding FlashcardTypeController...
+Added 'FlashcardTypes' to database context 'DailyPlanner.Models.DailyPlannerDbContext'
+Added repository 'Models\FlashcardTypeRepository.cs'
+Added controller Controllers\FlashcardTypeController.cs
+Added Create view at 'Views\FlashcardType\Create.cshtml'
+Added Edit view at 'Views\FlashcardType\Edit.cshtml'
+Added Delete view at 'Views\FlashcardType\Delete.cshtml'
+Added Details view at 'Views\FlashcardType\Details.cshtml'
+Added Index view at 'Views\FlashcardType\Index.cshtml'
+Added _CreateOrEdit view at 'Views\FlashcardType\_CreateOrEdit.cshtml'
+
+PM> enable-migrations -contexttypename dailyplannerdbcontext
+Checking if the context targets an existing database...
+Detected database created with a database initializer. Scaffolded migration '201410151551093_InitialCreate' corresponding to existing database. To use an automatic migration instead, delete the Migrations folder and re-run Enable-Migrations specifying the -EnableAutomaticMigrations parameter.
+Code First Migrations enabled for project DailyPlanner.
+
+PM> enable-migrations -contexttypename dailyplannerdbcontext -enableautomaticmigrations
+Checking if the context targets an existing database...
+Code First Migrations enabled for project DailyPlanner.
+
+PM> add-migration ModifiedContext
+Scaffolding migration 'ModifiedContext'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration ModifiedContext' again.
+
+PM> update-database -verbose
+Using StartUp project 'DailyPlanner'.
+Using NuGet project 'DailyPlanner'.
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Target database is: '|DataDirectory|DailyPlanner.Models.DailyPlannerDbContext.sdf' (DataSource: |DataDirectory|DailyPlanner.Models.DailyPlannerDbContext.sdf, Provider: System.Data.SqlServerCe.4.0, Origin: Convention).
+Applying explicit migrations: [201410151634047_ModifiedContext].
+Applying explicit migration: 201410151634047_ModifiedContext.
+CREATE TABLE [FlashcardTypes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Name] [nvarchar](100) NOT NULL,
+    [Description] [nvarchar](400),
+    CONSTRAINT [PK_dbo.FlashcardTypes] PRIMARY KEY ([Id])
+)
+CREATE TABLE [ToyTypes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Name] [nvarchar](100) NOT NULL,
+    [Description] [nvarchar](400),
+    CONSTRAINT [PK_dbo.ToyTypes] PRIMARY KEY ([Id])
+)
+INSERT [__MigrationHistory]([MigrationId], [ContextKey], [Model], [ProductVersion])
+VALUES (N'201410151634047_ModifiedContext', N'DailyPlanner.Models.DailyPlannerDbContext',  0x1F8B0800000000000400ED594B6FE33610BE17E87F1074CE9ACEE3D006F22E523B2E82AE936095EC9D96C636518A5249CAB07F5B0FFB93FA173AB4DE94FCDC47F66004306272E69B278733F47FFF7EF13EAC22EE2C412A168B817BD9EBBB0E88200E99980FDC54CFDEFDE67E78FFEB2FDE7D18AD9CCF05DDB5A1434EA106EE42EBE49610152C20A2AA17B140C62A9EE95E1047848631B9EAF77F2797970410C2452CC7F13EA542B308365FF0EB301601243AA57C1287C055BE8E3BFE06D579A411A8840630704794F1F533A74280EC65E4AE73C71945557CE033D7C1AD58538D8ADEBE2AF0B58CC5DC4F7081F29775024837A35C416EC06D457EA82DFD2B630BA9180BA820553A8E8E04BCBCCE9D436CF6935CEC96CE43F7DDA39BF5DA58BD71E1C0BD0B345BE64BAE630BBC1D7269763ABDDCABF35E38758A8B32333081CCDF85334CB94E250C04A45A527EE13CA753CE82BF60FD12FF0D622052CEEBAAA2B2B8D758C0A567192720F5FA13CC72031E42D7214D3E6233966C359ECCAC07A1AFAF5CE71185D3298732136A2EF0752CE14F40ABA886F0996A0D52180CD8F8B225DD92653E0B69987A788C5C6742571F41CCF5020F581F0FCE98AD202C56720D5E05C353874C5AA6D0A1615DAA47AAB8EE8CF69853B508A80C4F097783F91CEF378C775BEA08542059921589ADC26F0E147E526EBDC42715919CED9C4FE77CC255BCF83565E8AB428F5A528CA6661756BA23C5F05ECFB34CE5429BE665E83EE88E6B0FDB854AA5AC67E835AF45B21BAC5118BBD0ACB2BB072E3F115D40E519EBF268E9BBAA5B2259BB54B455644B5FE54D689260706B7D56BEE2F85993357CE71FDF7C4419060954470F526A5B4AC27342E760EDA268D474CCA4D223AAE9949AF41A86518BAC3B53B678BA90D9950C76C9A882507099FFDBE9D9D515D9609563C7686B8415606336948A590D598B7DD301534E6547451AC63C8DC4B6AAB68B3BAB3175FE6CA58DE0114B7FDB5BA4E52EABB6DA31382842D609FBDA1035CFE3F131DAC3FFD641DA86D028EA75A0C6C64F13F4B20E7E6DB88BAA797CA0B7729E437C44885B17944D524A2F2F2AEB42F2F2CB61FF6B40EBB6C8485C071DB564A1B929FCB5D210F50C41CFFF87FB20972087D0BB316F1805D9840A3603A5B3E6D2DDEC351E157E9E019F2815F223A6FC1FDE2433812DDBDE36F8C80EB5DE178B2595C182CA7667FC3DC6E6B3FFB682768C0D9DD8374DEC6F30759E83F2D641B147B776DF7EF848B67722CBAAFAC00DA731DA94296CCD74C70C6DFB67B62E81F6DC77D85CB76BACEB92528D83270E7DEDBBD323F5F7760F1384CD2B08F3FA2E2030F9528116340F621617F985A6D5352A48ACF49B80A621A6C09DD46C46038DDB0128B5794BF84C798A24F7D114C207F194EA24D5774A4134E58D87118FEC96BF996C9B3A7B4F9B8C57DFC2045493A109F024FE48190F4BBDC71D77CA1608731AF242815AF9DA148CF9BA447A8CC58140B9FB4690803065E605A28423987A123E5DC229BABD2AF808731AAC8BE6673BC8FE4034DDEE8D189D4B1AA91CA3E237BF2111F323D2FBFF01E286D54F761A0000 , N'6.1.1-30610')
+
+Running Seed method.
+PM> add-migration ModifiedContext
+Scaffolding migration 'ModifiedContext'.
+The Designer Code for this migration file includes a snapshot of your current Code First model. This snapshot is used to calculate the changes to your model when you scaffold the next migration. If you make additional changes to your model that you want to include in this migration, then you can re-scaffold it by running 'Add-Migration ModifiedContext' again.
+
+A previous migration called 'ModifiedContext' was already applied to the target database. If you meant to re-scaffold 'ModifiedContext', revert it by running 'Update-Database -TargetMigration 201410151551093_InitialCreate', then delete '201410151705022_ModifiedContext1.cs' and run 'Add-Migration ModifiedContext' again.
+PM> Scaffold Controller -ModelType Toy ControllerName ToyController -DbContextType DailyPlannerDbContext -Repository -force
