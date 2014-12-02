@@ -1,4 +1,4 @@
-@model DailyPlanner.Models.Flashcard
+@model DailyPlanner.DomainClasses.Flashcard
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
@@ -22,7 +22,7 @@
     FlashcardType
 </div>
 <div class="editor-field">
-    @Html.DropDownListFor(model => model.FlashcardTypeId, ((IEnumerable<DailyPlanner.Models.FlashcardType>)ViewBag.PossibleFlashcardTypes).Select(option => new SelectListItem {
+    @Html.DropDownListFor(model => model.FlashcardTypeId, ((IEnumerable<DailyPlanner.DomainClasses.FlashcardType>)ViewBag.PossibleFlashcardTypes).Select(option => new SelectListItem {
         Text = (option == null ? "None" : option.Name), 
         Value = option.Id.ToString(),
         Selected = (Model != null) && (option.Id == Model.FlashcardTypeId)

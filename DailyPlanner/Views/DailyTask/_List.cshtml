@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DailyPlanner.DomainClasses.DailyTask>
+    
+
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Comment
+        </th>
+        <th>
+            Start time
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Date
+        </th>
+
+        <th>
+            ActivityType
+        </th>
+        
+        <th>
+            Status
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Comment
+            </td>
+            <td>
+                @item.StartTime
+            </td>
+            <td class="duration">
+                @item.Duration
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                @(item.Activity == null ? "None" : item.Activity.Name)
+            </td>
+            
+            <td>
+                @item.DailyTaskStatus
+            </td>
+        </tr>
+    }
+
+</table>

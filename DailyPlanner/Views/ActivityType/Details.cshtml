@@ -1,20 +1,28 @@
-@model DailyPlanner.Models.ActivityType
+@model DailyPlanner.DomainClasses.ActivityType
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Activity type details form</h2>
+<br />
+<div class="form-horizontal">
 
-<fieldset>
-    <legend>ActivityType</legend>
+    <div class="form-group">
+        <div class="col-sm-2 control-label">Name</div>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" value="@Model.Name" disabled />
+        </div>
+    </div>
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <br />
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    </div>
+</div>
+
+@Html.ActionLink("Back to List", "Index")
 
 

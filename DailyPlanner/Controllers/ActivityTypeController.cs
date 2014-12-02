@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using DailyPlanner.Models;
-using DailyPlanner.Models.Interfaces;
-using DailyPlanner.Models.Repositories;
+
+using DailyPlanner.DomainClasses;
+using DailyPlanner.Repository.Interfaces;
 
 namespace DailyPlanner.Controllers
 {
@@ -13,12 +9,7 @@ namespace DailyPlanner.Controllers
     public class ActivityTypeController : Controller
     {
         private readonly IActivityTypeRepository activitytypeRepository;
-
-        // If you are using Dependency Injection, you can delete the following constructor
-        public ActivityTypeController()
-            : this(new ActivityTypeRepository())
-        {
-        }
+     
 
         public ActivityTypeController(IActivityTypeRepository activitytypeRepository)
         {

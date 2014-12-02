@@ -1,5 +1,5 @@
-@using DailyPlanner.Models
-@model DailyPlanner.Models.Activity
+@using DailyPlanner.DomainClasses
+@model DailyPlanner.DomainClasses.Activity
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
@@ -23,7 +23,10 @@
     Activity type
 </div>
 <div class="editor-field">
-    @Html.DropDownListFor(model => model.ActivityTypeId, ((IEnumerable<DailyPlanner.Models.ActivityType>)ViewBag.PossibleActivityTypes).Select(option => new SelectListItem {
+    @Html.DropDownListFor(model => model.ActivityTypeId, 
+    ((IEnumerable<DailyPlanner.DomainClasses.ActivityType>)ViewBag.PossibleActivityTypes).
+    Select(option => new SelectListItem
+{
         Text = (option == null ? "None" : option.Name), 
         Value = option.Id.ToString(),
         Selected = (Model != null) && (option.Id == Model.ActivityTypeId)
@@ -54,7 +57,7 @@
                     <input type="checkbox"
                            name="selectedToys"
                            value="@toy.Id"
-                        @Html.Raw(Model.Toys.Count(p => p.Name == toyName) != 0 ? "checked=\"checked\"" : "") />
+                        @Html.Raw((Model != null && Model.Toys != null && Model.Toys.Count(p => p.Name == toyName) != 0) ? "checked=\"checked\"" : "") />
                     @toy.Id @:  @toy.Name
                     @:</td>
                 }
@@ -88,7 +91,7 @@
                                     <input type="checkbox"
                                            name="selectedFlashcards"
                                            value="@flashcard.Id"
-                                           @Html.Raw(Model.Flashcards.Count(p => p.Name == flashcardName) != 0 ? "checked=\"checked\"" : "") />
+                                           @Html.Raw((Model != null && Model.Flashcards != null && Model.Flashcards.Count(p => p.Name == flashcardName) != 0) ? "checked=\"checked\"" : "") />
                                     @flashcard.Id @:  @flashcard.Name
                                     @:</td>
                         }

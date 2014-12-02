@@ -1,7 +1,7 @@
-@model DailyPlanner.Models.DailyTask
+@model DailyPlanner.DomainClasses.DailyTask
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
-
+@Html.AntiForgeryToken()
 <div class="editor-label">
     @Html.LabelFor(model => model.Name)
 </div>
@@ -42,13 +42,22 @@
     @Html.ValidationMessageFor(model => model.StartTime)
 </div>
 
-
+<div class="editor-label">
+        @Html.LabelFor(model => model.DailyTaskStatus)
+    </div>
+    <div class="editor-field">
+        @Html.EnumDropDownListFor(model => model.DailyTaskStatus)
+        @Html.ValidationMessageFor(model => model.DailyTaskStatus)
+    </div>
 
 <div class="editor-label">
     Activity
 </div>
 <div class="editor-field">
-    @Html.DropDownListFor(model => model.ActivityId, ((IEnumerable<DailyPlanner.Models.Activity>)ViewBag.PossibleActivities).Select(option => new SelectListItem {
+    @Html.DropDownListFor(model => model.ActivityId,
+    ((IEnumerable<DailyPlanner.DomainClasses.Activity>)ViewBag.PossibleActivities).
+    Select(option => new SelectListItem 
+    {
         Text = (option == null ? "None" : option.Name), 
         Value = option.Id.ToString(),
         Selected = (Model != null) && (option.Id == Model.ActivityId)

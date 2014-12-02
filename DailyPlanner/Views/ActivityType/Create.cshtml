@@ -1,21 +1,26 @@
-@model DailyPlanner.Models.ActivityType
+@model DailyPlanner.DomainClasses.ActivityType
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create activity type</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "ActivityType",
+                    FormMethod.Post, new { @class = "form-horizontal" }))
+{
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>ActivityType</legend>
+        @*<legend>ActivityType</legend>*@
 
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Create activity type" class="btn btn-primary btn-sm" />
+            </div>
+        </div>
+
     </fieldset>
 }
 

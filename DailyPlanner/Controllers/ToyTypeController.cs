@@ -1,27 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using DailyPlanner.DomainClasses;
 using DailyPlanner.Models;
-using DailyPlanner.Models.Interfaces;
-using DailyPlanner.Models.Repositories;
+using DailyPlanner.Repository.Interfaces;
 
 namespace DailyPlanner.Controllers
 {   
     [Authorize]
     public class ToyTypeController : Controller
     {
-		private readonly IToyTypeRepository toytypeRepository;
-
-		// If you are using Dependency Injection, you can delete the following constructor
-        public ToyTypeController() : this(new ToyTypeRepository())
+		private readonly IToyTypeRepository toyTypeRepository;
+		
+        public ToyTypeController(IToyTypeRepository toyTypeRepository)
         {
-        }
-
-        public ToyTypeController(IToyTypeRepository toytypeRepository)
-        {
-			this.toytypeRepository = toytypeRepository;
+			this.toyTypeRepository = toyTypeRepository;
         }
 
         //
@@ -29,7 +21,7 @@ namespace DailyPlanner.Controllers
 
         public ViewResult Index()
         {
-            return View(toytypeRepository.All);
+            return View(toyTypeRepository.All);
         }
 
         //
@@ -37,7 +29,7 @@ namespace DailyPlanner.Controllers
 
         public ViewResult Details(int id)
         {
-            return View(toytypeRepository.Find(id));
+            return View(toyTypeRepository.Find(id));
         }
 
         //
@@ -55,8 +47,8 @@ namespace DailyPlanner.Controllers
         public ActionResult Create(ToyType toytype)
         {
             if (ModelState.IsValid) {
-                toytypeRepository.InsertOrUpdate(toytype);
-                toytypeRepository.Save();
+                toyTypeRepository.InsertOrUpdate(toytype);
+                toyTypeRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -68,7 +60,7 @@ namespace DailyPlanner.Controllers
  
         public ActionResult Edit(int id)
         {
-             return View(toytypeRepository.Find(id));
+             return View(toyTypeRepository.Find(id));
         }
 
         //
@@ -78,8 +70,8 @@ namespace DailyPlanner.Controllers
         public ActionResult Edit(ToyType toytype)
         {
             if (ModelState.IsValid) {
-                toytypeRepository.InsertOrUpdate(toytype);
-                toytypeRepository.Save();
+                toyTypeRepository.InsertOrUpdate(toytype);
+                toyTypeRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -91,7 +83,7 @@ namespace DailyPlanner.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View(toytypeRepository.Find(id));
+            return View(toyTypeRepository.Find(id));
         }
 
         //
@@ -100,8 +92,8 @@ namespace DailyPlanner.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            toytypeRepository.Delete(id);
-            toytypeRepository.Save();
+            toyTypeRepository.Delete(id);
+            toyTypeRepository.Save();
 
             return RedirectToAction("Index");
         }
@@ -109,7 +101,7 @@ namespace DailyPlanner.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                toytypeRepository.Dispose();
+                toyTypeRepository.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+
+using DailyPlanner.Dal.DbContexts;
 
 namespace DailyPlanner
 {
@@ -16,6 +14,11 @@ namespace DailyPlanner
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            System.Data.Entity.Database.SetInitializer<DailyPlannerDbContext>(
+                new System.Data.Entity.CreateDatabaseIfNotExists<DailyPlannerDbContext>());
+
         }
+
     }
 }

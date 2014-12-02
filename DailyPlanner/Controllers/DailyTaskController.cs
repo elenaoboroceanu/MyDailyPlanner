@@ -1,37 +1,75 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 
-using DailyPlanner.Models;
-using DailyPlanner.Models.Interfaces;
-using DailyPlanner.Models.Repositories;
+using DailyPlanner.DomainClasses;
+using DailyPlanner.Repository.Interfaces;
 
 namespace DailyPlanner.Controllers
 {
     public class DailyTaskController : Controller
     {
-       private readonly IDailyTaskRepository dailyTaskRepository;
-       private readonly IActivityRepository activityRepository;
+        private readonly IDailyTaskRepository _dailyTaskRepository;
+        private readonly IActivityRepository _activityRepository;
 
-		// If you are using Dependency Injection, you can delete the following constructor
-       public DailyTaskController()
-           : this(new DailyTaskRepository(), new ActivityRepository())
-        {
-        }
 
-       public DailyTaskController(IDailyTaskRepository dailyTaskRepository, IActivityRepository activityRepository)
+        public DailyTaskController(IDailyTaskRepository dailyTaskRepository, IActivityRepository activityRepository)
         {
-            this.dailyTaskRepository = dailyTaskRepository;
-           this.activityRepository = activityRepository;
+            _dailyTaskRepository = dailyTaskRepository;
+            _activityRepository = activityRepository;
         }
-        // GET: DailyTask
+        //// GET: DailyTask
         public ActionResult Index()
         {
-            return View(dailyTaskRepository.AllIncluding(dailyTask=>dailyTask.Activity));
+            return SearchByDate();
+        }
+
+        // GET: DailyTask by date
+
+        //[ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult SearchByDate(DateTime? date)
+        {
+            if (!date.HasValue || date.Value == DateTime.MinValue)
+            {
+                return HttpNotFound();
+            }
+            //, new {@class="btn btn-primary btn-lg"})
+            var dailyTasksByDate = _dailyTaskRepository
+                .GetTasksIncludingActivitiesByDate(date.Value.Date)
+                .ToList();
+            ViewBag.Date = date.Value.ToString("yyyy-MM-dd");
+            return View("Index", dailyTasksByDate);
+        }
+
+        [HttpGet]
+        public ActionResult SearchByDate()
+        {
+            var dailyTasksByDate = _dailyTaskRepository
+              .GetTasksIncludingActivitiesByDate(DateTime.Now.Date)
+              .ToList();
+            ViewBag.Date = DateTime.Now.ToString("yyyy-MM-dd");
+            return View("Index", dailyTasksByDate);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public JsonResult GetTotalTimeByDate(string date)
+        {
+            DateTime dateTime = Convert.ToDateTime(date).Date;
+            var sumByDate = _dailyTaskRepository.All
+                .Where(p => p.Date == dateTime)
+                .Sum(p => p.Duration);
+
+            return Json(sumByDate);
+
+            //return date;
         }
 
         // GET: DailyTask/Details/5
         public ActionResult Details(int id)
         {
-            DailyTask dailyTask = dailyTaskRepository.Find(id);
+            DailyTask dailyTask = _dailyTaskRepository.Find(id);
             if (dailyTask == null)
             {
                 return HttpNotFound();
@@ -42,7 +80,7 @@ namespace DailyPlanner.Controllers
         // GET: DailyTask/Create
         public ActionResult Create()
         {
-            ViewBag.PossibleActivities = activityRepository.All;
+            ViewBag.PossibleActivities = _activityRepository.All;
             return View();
         }
 
@@ -55,27 +93,25 @@ namespace DailyPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-                dailyTaskRepository.InsertOrUpdate(dailyTask);
-                dailyTaskRepository.Save();
+                _dailyTaskRepository.InsertOrUpdate(dailyTask);
+                _dailyTaskRepository.Save();
                 return RedirectToAction("Index");
             }
-            else
-            {
-                ViewBag.PossibleActivities = activityRepository.All;
-                return View();
-            }            
+            ViewBag.PossibleActivities = _activityRepository.All;
+            return View();
         }
 
         // GET: DailyTask/Edit/5
         public ActionResult Edit(int id)
         {
-          
-            DailyTask dailyTask = dailyTaskRepository.Find(id);
+
+            DailyTask dailyTask = _dailyTaskRepository.Find(id);
             if (dailyTask == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PossibleActivities = dailyTaskRepository.All;
+            ViewBag.PossibleActivities = _activityRepository.All;
+
             return View(dailyTask);
         }
 
@@ -88,18 +124,19 @@ namespace DailyPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-                dailyTaskRepository.InsertOrUpdate(dailyTask);
-                dailyTaskRepository.Save();
-                return RedirectToAction("Index");
+                _dailyTaskRepository.InsertOrUpdate(dailyTask);
+                _dailyTaskRepository.Save();
+                return RedirectToAction("SearchByDate", new { date = dailyTask.Date });
             }
-            ViewBag.PossibleActivities = activityRepository.All;
+            // If the model is invalid, we must remain on the same page
+            ViewBag.PossibleActivities = _activityRepository.All;
             return View();
         }
 
         // GET: DailyTask/Delete/5
         public ActionResult Delete(int id)
         {
-            DailyTask dailyTask = dailyTaskRepository.Find(id);
+            DailyTask dailyTask = _dailyTaskRepository.Find(id);
             if (dailyTask == null)
             {
                 return HttpNotFound();
@@ -112,9 +149,9 @@ namespace DailyPlanner.Controllers
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            dailyTaskRepository.Delete(id);
-            dailyTaskRepository.Save();
+        {
+            _dailyTaskRepository.Delete(id);
+            _dailyTaskRepository.Save();
             return RedirectToAction("Index");
         }
 
@@ -122,9 +159,14 @@ namespace DailyPlanner.Controllers
         {
             if (disposing)
             {
-                dailyTaskRepository.Dispose();
+                _dailyTaskRepository.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult IsNumberEven(int evenNumber)
+        {
+            return Json(evenNumber % 2 == 0, JsonRequestBehavior.AllowGet);
         }
     }
 }

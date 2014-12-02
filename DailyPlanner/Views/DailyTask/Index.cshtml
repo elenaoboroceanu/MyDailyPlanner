@@ -1,4 +1,4 @@
-@model IEnumerable<DailyPlanner.Models.DailyTask>
+@model IEnumerable<DailyPlanner.DomainClasses.DailyTask>
 
 @{
     ViewBag.Title = "Index";
@@ -9,58 +9,39 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            Name
-        </th>
-        <th>
-            Comment
-        </th>
-        <th>
-            Start time
-        </th>
-        <th>
-            Duration
-        </th>
-        <th>
-            Date
-        </th>
+<p>
 
-        <th>
-            ActivityType
-        </th>       
-    </tr>
+    @using (Html.BeginForm("SearchByDate", "DailyTask"))
+    {
+        @Html.AntiForgeryToken()
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        <td>
-			@item.Name
-        </td>
-        <td>
-            @item.Comment
-        </td>
-        <td>
-            @item.StartTime
-        </td>
-        <td>
-            @item.Duration
-        </td>
-        <td>
-            @item.Date
-        </td>
-        <td>
-			@(item.Activity == null ? "None" : item.Activity.Name)
-        </td>        
-    </tr>
+        var selectedDate = DateTime.Now.ToString("yyyy-MM-dd");
+        if (ViewBag.Date != null)
+        {
+            selectedDate = ViewBag.Date;
+        }
+        <input type="date" name="date" id="date" value="@selectedDate" />
+        <input type="submit" value="Search by date" class="btn btn-primary" />
+    }
+</p>
+
+@Html.Partial("_List")
+<br/>
+<hr/>
+<br/>
+
+<p>
+    Total time for activities <span id="totalTimeMinutes"></span> minutes, meaning
+    <span id="totalTimeHours"></span> hours and <span id="minutes"></span> minutes.
+</p>
+
+<p>
+    Total time calculated on the server is <span id="totalTimeServer"></span> minutes.
+</p>
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/CalculateTotalTime.js">    
+
+    </script>
+
 }
-
-</table>
-
-

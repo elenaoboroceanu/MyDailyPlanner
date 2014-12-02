@@ -1,25 +1,29 @@
-@model DailyPlanner.Models.ActivityType
+@model DailyPlanner.DomainClasses.ActivityType
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm()) {
+<h2>Edit activity type</h2>
+<br />
+@using (Html.BeginForm("Edit", "ActivityType",
+                    FormMethod.Post, new { @class = "form-horizontal" }))
+{
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>ActivityType</legend>
+       @* <legend>Activity type</legend>*@
 
         @Html.HiddenFor(model => model.Id)
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Update activity type" class="btn btn-primary btn-sm" />
+            </div>
+        </div>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to list", "Index")
 </div>

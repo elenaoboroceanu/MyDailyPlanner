@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
+using DailyPlanner.DomainClasses;
 using DailyPlanner.Models;
-using DailyPlanner.Models.Interfaces;
-using DailyPlanner.Models.Repositories;
+using DailyPlanner.Repository.Interfaces;
 
 namespace DailyPlanner.Controllers
 {   
@@ -14,11 +15,7 @@ namespace DailyPlanner.Controllers
     {
 		private readonly IFlashcardTypeRepository flashcardtypeRepository;
 
-		// If you are using Dependency Injection, you can delete the following constructor
-        public FlashcardTypeController() : this(new FlashcardTypeRepository())
-        {
-        }
-
+		
         public FlashcardTypeController(IFlashcardTypeRepository flashcardtypeRepository)
         {
 			this.flashcardtypeRepository = flashcardtypeRepository;

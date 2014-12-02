@@ -1,4 +1,4 @@
-@model DailyPlanner.Models.Toy
+@model DailyPlanner.DomainClasses.Toy
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
@@ -30,7 +30,8 @@
     ToyType
 </div>
 <div class="editor-field">
-    @Html.DropDownListFor(model => model.ToyTypeId, ((IEnumerable<DailyPlanner.Models.ToyType>)ViewBag.PossibleToyTypes).Select(option => new SelectListItem {
+    @Html.DropDownListFor(model => model.ToyTypeId, ((IEnumerable<DailyPlanner.DomainClasses.ToyType>)ViewBag.PossibleToyTypes).Select(option => new SelectListItem
+{
         Text = (option == null ? "None" : option.Name), 
         Value = option.Id.ToString(),
         Selected = (Model != null) && (option.Id == Model.ToyTypeId)
