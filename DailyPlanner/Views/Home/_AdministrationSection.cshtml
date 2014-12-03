@@ -5,7 +5,11 @@
             The activity types manager is here:
         </p>
 
-        <p>@Html.ActionLink("Go and manage >>", "Index", "ActivityType", null, new {@class="btn btn-primary"})</p>
+        <p>
+            @*@Html.ActionLink("Go and manage >>", "Index", "ActivityType", null, new {@class="btn btn-info"})*@
+            
+            <a href="@Url.Action("Index", "ActivityType")" class="btn btn-info">Go and manage &raquo;</a>
+        </p>
     </div>
     <div class="col-md-4">
         <h2>Manage flashcard types</h2>
@@ -13,7 +17,11 @@
             The flashcard types manager is here:
         </p>
 
-        <p>@Html.ActionLink("Go and manage >>", "Index", "FlashcardType")</p>
+        <p>
+            @*@Html.ActionLink("Go and manage >>", "Index", "FlashcardType", null, new { @class = "btn btn-info" })*@
+            
+            <a href="@Url.Action("Index", "FlashcardType")" class="btn btn-info">Go and manage &raquo;</a>
+        </p>
     </div>
 
     <div class="col-md-4">
@@ -21,7 +29,11 @@
         <p>
             The toy types manager is here:
         </p>
-        <p>@Html.ActionLink("Go and manage >>", "Index", "ToyType")</p>
+        <p>
+            @*@Html.ActionLink("Go and manage >>", "Index", "ToyType", null, new { @class = "btn btn-info" })*@
+            
+            <a href="@Url.Action("Index", "ToyType")" class="btn btn-info">Go and manage &raquo;</a>
+        </p>
     </div>
 
     <div class="col-md-4">
@@ -29,7 +41,11 @@
         <p>
             The activities manager is here:
         </p>
-        <p>@Html.ActionLink("Go and manage >>", "Index", "Activity")</p>
+        <p>
+            @*@Html.ActionLink("Go and manage >>", "Index", "Activity", null, new { @class = "btn btn-info" })*@
+            
+            <a href="@Url.Action("Index", "Activity")" class="btn btn-info">Go and manage &raquo;</a>
+        </p>
     </div>
 
     <div class="col-md-4">
@@ -37,7 +53,11 @@
         <p>
             The flashcards manager is here:
         </p>
-        <p>@Html.ActionLink("Go and manage >>", "Index", "Flashcard")</p>
+        <p>
+            @*@Html.ActionLink("Go and manage >>", "Index", "Flashcard", null, new { @class = "btn btn-info" })*@
+            
+            <a href="@Url.Action("Index", "Flashcard")" class="btn btn-info">Go and manage &raquo;</a>
+        </p>
     </div>
 
     <div class="col-md-4">
@@ -45,18 +65,22 @@
         <p>
             The toys manager is here:
         </p>
-        <p>@Html.ActionLink("Go and manage >>", "Index", "Toy")</p>
+        <p>
+            @*@Html.ActionLink("Go and manage &raquo;", "Index", "Toy", null, new { @class = "btn btn-info" })*@
+            
+            <a href="@Url.Action("Index", "Toy")" class="btn btn-info">Go and manage &raquo;</a>
+        </p>
     </div>
 
 
     <div class="col-md-4">
         <h2>Manage meals</h2>
         <p>The meals manager is here</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Go and manage &raquo;</a></p>
+        <p><a class="btn btn-info" href="http://go.microsoft.com/fwlink/?LinkId=301867">Go and manage &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Manage pills</h2>
         <p>The medication manager is here</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Go and manage &raquo;</a></p>
+        <p><a class="btn btn-info" href="http://go.microsoft.com/fwlink/?LinkId=301867">Go and manage &raquo;</a></p>
     </div>
 </div>
