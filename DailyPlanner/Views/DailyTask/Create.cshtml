@@ -4,18 +4,19 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "DailyTask", FormMethod.Post, new { @class = "form-horizontal" }))
+{
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Daily task</legend>
+        <legend>Create a new daily task</legend>
 
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                <button type="submit" class="btn btn-primary" value="Create">Create</button>
+            </div>
+        </div>
     </fieldset>
 }
 

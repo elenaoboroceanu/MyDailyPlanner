@@ -4,29 +4,45 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>Activity</legend>
+    <legend>@Model.Name activity details</legend>
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+        <dd>
+            @Model.Name
+        </dd>
 
-    <div class="display-label">Description</div>
-    <div class="display-field">@Model.Description</div>
+        <dt>
+            Description
+        </dt>
+        <dd>@Model.Description</dd>
 
-    <div class="display-label">ActivityType</div>
-    <div class="display-field">@(Model.ActivityType == null ? "None" : Model.ActivityType.Name)</div>
+        <dt>
+            ActivityType
+        </dt>
+        <dd>@(Model.ActivityType == null ? "None" : Model.ActivityType.Name)</dd>
 
-    <div class="display-label">Toys</div>
-    <div class="display-field">@(Model.Toys == null ? "None" : Model.Toys.Count.ToString())</div>
+        <dt>
+            Toys
+        </dt>
+        <dd>@(Model.Toys == null ? "None" : Model.Toys.Count.ToString())</dd>
 
-    <div class="display-label">Flashcards</div>
-    <div class="display-field">@(Model.Flashcards == null ? "None" : Model.Flashcards.Count.ToString())</div>
+        <dt>
+            Flashcards
+        </dt>
+        <dd>@(Model.Flashcards == null ? "None" : Model.Flashcards.Count.ToString())</dd>
+    </dl>
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
+    </div>
+</div>
+
+@Html.ActionLink("Back to List", "Index")
 
 

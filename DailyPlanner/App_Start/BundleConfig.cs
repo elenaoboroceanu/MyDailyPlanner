@@ -29,7 +29,8 @@ namespace DailyPlanner
                       "~/Content/bootstrap.css",
 //                      "~/Content/site.css",
                       "~/Content/landing-page.css",
-                      "~/Content/font-awesome-4.2.0/css/font-awesome.min.css"));
+                      "~/Content/font-awesome-4.2.0/css/font-awesome.min.css",
+                      "~/Content/DailyPlanner.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

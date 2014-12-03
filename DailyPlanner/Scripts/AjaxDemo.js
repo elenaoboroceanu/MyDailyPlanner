@@ -12,7 +12,7 @@
         var comment = $(this).serialize();
         var url = $(this).attr('action');
 
-        alert("In the form " + " URL=" + url + " DATA=" + comment);
+        //alert("In the form " + " URL=" + url + " DATA=" + comment);
         $.post(url, data, function (response) {
             $('#comments').append(response);
         });

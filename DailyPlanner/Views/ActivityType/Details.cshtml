@@ -4,25 +4,27 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Activity type details form</h2>
-<br />
-<div class="form-horizontal">
+<fieldset>
+    <legend>@Model.Name activity type details</legend>
 
-    <div class="form-group">
-        <div class="col-sm-2 control-label">Name</div>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" value="@Model.Name" disabled />
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+        <dd>
+            @Model.Name
+        </dd>
+
+    </dl>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+
+                @Html.ActionLink("Edit activity type", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
+
+            </div>
         </div>
-    </div>
-
-    <br />
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-sm" })
-        </div>
-    </div>
-</div>
-
-@Html.ActionLink("Back to List", "Index")
+    
+</fieldset>
+    @Html.ActionLink("Back to List", "Index")
 
 

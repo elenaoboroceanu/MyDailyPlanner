@@ -4,14 +4,12 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create activity type</h2>
-
-@using (Html.BeginForm("Create", "ActivityType",
-                    FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Create", "ActivityType", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.ValidationSummary(true)
+
     <fieldset>
-        @*<legend>ActivityType</legend>*@
+        <legend>Create a new activity type</legend>
 
         @Html.Partial("_CreateOrEdit", Model)
 

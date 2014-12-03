@@ -4,35 +4,52 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+
 
 <fieldset>
-    <legend>Activity</legend>
+    <legend>@Model.Name task details</legend>
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+        <dd>
+            @Model.Name
+        </dd>
 
-    <div class="display-label">Description</div>
-    <div class="display-field">@Model.Comment</div>
-    
-    <div class="display-label">Date</div>
-    <div class="display-field">@Model.Date</div>
+        <dt>Description</dt>
+        <dd>@Model.Comment</dd>
 
-    <div class="display-label">Start time</div>
-    <div class="display-field">@Model.StartTime</div>
+        <dt>Date</dt>
+        <dd>
+            @Model.Date.ToShortDateString()
+        </dd>
 
-    <div class="display-label">Duration</div>
-    <div class="display-field">@Model.Duration</div>
+        <dt>Start time</dt>
+        <dd>@Model.StartTime.ToShortTimeString()</dd>
 
-    
+        <dt>Duration</dt>
+        <dd>@Model.Duration</dd>
 
-    <div class="display-label">ActivityType</div>
-    <div class="display-field">@(Model.Activity == null ? "None" : Model.Activity.Name)</div>
 
- </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+
+        <dt>Activity</dt>
+        <dd>@((Model.Activity == null) ? "None" : Model.Activity.Name)</dd>
+
+    </dl>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
+
+        </div>
+    </div>
+
+</fieldset>
+<div>
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
 
 

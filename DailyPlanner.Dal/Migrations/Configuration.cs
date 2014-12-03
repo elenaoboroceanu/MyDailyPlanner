@@ -6,32 +6,27 @@ using DailyPlanner.DomainClasses;
 
 namespace DailyPlanner.Dal.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<DailyPlannerDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DailyPlanner.Dal.DbContexts.DailyPlannerDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
             ContextKey = "DailyPlanner.Models.DailyPlannerDbContext";
+      
         }
 
-        protected override void Seed(DailyPlannerDbContext context)
+        protected override void Seed(DailyPlanner.Dal.DbContexts.DailyPlannerDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            // PopulateDatabase(context);
+            PopulateDatabase(context);
         }
-
-        private static void PopulateDatabase(DailyPlannerDbContext context)
+         private static void PopulateDatabase(DailyPlannerDbContext context)
         {
             var eating = new ActivityType {Name = "Eating"};
             var nightSleep = new ActivityType {Name = "Night time sleep"};
             var bathActivityType = new ActivityType {Name = "Bathing"};
             var nap = new ActivityType {Name = "Taking a nap"};
-            var homeTeacherActivity = new ActivityType {Name = "Home Teacher-St. Michael's House"};
-            var nacdActivity = new ActivityType {Name = "NACD"};
+            var structuredActivity = new ActivityType {Name = "Structured Activities"};
+            
 
             context.ActivityTypes.AddOrUpdate(
                 p => p.Name,
@@ -39,35 +34,24 @@ namespace DailyPlanner.Dal.Migrations
                 nightSleep,
                 bathActivityType,
                 nap,
-                new ActivityType {Name = "Other activities of Daily Living-eg. nappy changing"},
-                new ActivityType {Name = "Structured Activities"},
-                new ActivityType {Name = "Leisure Time"},
+                structuredActivity,
+                new ActivityType {Name = "Other activities of daily living-eg. nappy changing"},                
+                new ActivityType {Name = "Leisure time"},
                 new ActivityType {Name = "Travel"},
-                new ActivityType {Name = "Unstructured Down Time"},
-                nacdActivity,
-                new ActivityType {Name = "Occupational-St. Michael's House"},
-                new ActivityType {Name = "Phisio-St. Michael's House"},
-                homeTeacherActivity,
-                new ActivityType {Name = "Speech and Language-St. Michael's House"},
+                new ActivityType {Name = "Unstructured down time"},                            
                 new ActivityType {Name = "Pre-school"}
                 );
 
-            var homeTeacherToy = new ToyType
-            {
-                Name = "From Home Teacher",
-                Description = "Toys brought from home teacher"
-            };
-            var personalToy = new ToyType {Name = "Personal Toy"};
+           
+            var personalToy = new ToyType {Name = "Personal toy"};
+            var borrowedToy = new ToyType { Name = "Borrowed toy" };
             context.ToyTypes.AddOrUpdate(
                 p => p.Name,
-                homeTeacherToy,
-                new ToyType {Name = "From Occupational Therapist"},
-                new ToyType {Name = "From Speach and Language Therapist"},
-                new ToyType {Name = "From Phisio Therapist"},
+                borrowedToy,           
                 personalToy
                 );
 
-            var bedroom = new FlashcardType {Name = "Bedroom", Description = "Toys brought from home teacher"};
+            var bedroom = new FlashcardType {Name = "Bedroom", Description = "Images from bedroom"};
             var bathroom = new FlashcardType {Name = "Bathroom"};
             var kitchen = new FlashcardType {Name = "Kitchen"};
             context.FlashcardTypes.AddOrUpdate(
@@ -190,17 +174,24 @@ namespace DailyPlanner.Dal.Migrations
             };
             var ringsOnSticks = new Toy
             {
-                Name = "HT:Color match: rings on sticks",
+                Name = "Color match: rings on sticks",
                 Description = "He has to match colors on sticks",
-                ToyType = homeTeacherToy,
-                ToyTypeId = homeTeacherToy.Id
+                ToyType = borrowedToy,
+                ToyTypeId = borrowedToy.Id
             };
             var carsOnWhireToy = new Toy
             {
-                Name = "HT:Threading: cars on a wire",
+                Name = "Threading: cars on a wire",
                 Description = "Put cars on whire",
-                ToyType = homeTeacherToy,
-                ToyTypeId = homeTeacherToy.Id
+                ToyType = borrowedToy,
+                ToyTypeId = borrowedToy.Id
+            };
+            var paintBrush = new Toy
+            {
+                Name = "Paintbrush",
+                Description = "",
+                ToyType = personalToy,
+                ToyTypeId = personalToy.Id
             };
 
             context.Toys.AddOrUpdate(
@@ -209,14 +200,15 @@ namespace DailyPlanner.Dal.Migrations
                 playDough,
                 ringsOnSticks,
                 riceInCups,
+                carsOnWhireToy,
                 new Toy
                 {
-                    Name = "HT:Bowling",
-                    Description = "Bowling set from HT",
-                    ToyType = homeTeacherToy,
-                    ToyTypeId = homeTeacherToy.Id
+                    Name = "Bowling",
+                    Description = "Bowling set",
+                    ToyType = borrowedToy,
+                    ToyTypeId = borrowedToy.Id
                 },
-                carsOnWhireToy,
+               
                 new Toy
                 {
                     Name = "Shape match: cars on wooden table",
@@ -244,18 +236,28 @@ namespace DailyPlanner.Dal.Migrations
             {
                 Name = "Puting cars on whire",
                 Description = "Cars on whire",
-                ActivityType = homeTeacherActivity,
-                ActivityTypeId = homeTeacherActivity.Id,
+                ActivityType = structuredActivity,
+                ActivityTypeId = structuredActivity.Id,
                 Flashcards = new Collection<Flashcard>(),
                 Toys = new Collection<Toy>() {carsOnWhireToy}
             };
+            var painting = new Activity()
+            {
+                Name = "Painting",
+                Description = "",
+                ActivityType = structuredActivity,
+                ActivityTypeId = structuredActivity.Id,
+                Flashcards = new Collection<Flashcard>(),
+                Toys = new Collection<Toy>() { paintBrush }
+            };
+
 
             var flashcardsBathActivity = new Activity()
             {
                 Name = "10 flashcards related to bathroom",
                 Description = "Toilet, shower, toothbrush, mirror, sink, tap, towel, bath, toothpaste, soap",
-                ActivityType = nacdActivity,
-                ActivityTypeId = nacdActivity.Id,
+                ActivityType = structuredActivity,
+                ActivityTypeId = structuredActivity.Id,
                 Flashcards =
                     new Collection<Flashcard>()
                     {
@@ -276,7 +278,10 @@ namespace DailyPlanner.Dal.Migrations
             context.Activities.AddOrUpdate(p => p.Name,
                 eatingBreakfastActivity,
                 threadingActivity,
-                flashcardsBathActivity);
+                flashcardsBathActivity,
+                painting);
         }
     }
 }
+
+

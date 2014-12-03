@@ -4,18 +4,21 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+@using (Html.BeginForm("Create", "Activity", FormMethod.Post, new { @class = "form-horizontal" })) {
+  
+      @Html.ValidationSummary(true)
+    
     <fieldset>
-        <legend>Activity</legend>
+        
+        <legend>Create a new activity</legend>
 
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="form-group">
+            <div class="col-xs-10">
+                <button type="submit" class="btn btn-primary btn-sm" value="Create">Create</button>
+            </div>
+        </div>
     </fieldset>
 }
 

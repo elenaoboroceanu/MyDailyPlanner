@@ -15,14 +15,14 @@ namespace DailyPlanner.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "My daily planner";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Do not hesitate to contact us!";
 
             return View();
         }

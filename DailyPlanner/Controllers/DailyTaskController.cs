@@ -69,7 +69,7 @@ namespace DailyPlanner.Controllers
         // GET: DailyTask/Details/5
         public ActionResult Details(int id)
         {
-            DailyTask dailyTask = _dailyTaskRepository.Find(id);
+            DailyTask dailyTask = _dailyTaskRepository.GetTasksIncludingActivityById(id);
             if (dailyTask == null)
             {
                 return HttpNotFound();

@@ -4,19 +4,22 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "DailyTask", FormMethod.Post, new { @class = "form-horizontal" }))
+{
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Daily task</legend>
+        <legend>Update a daily task</legend>
 
         @Html.HiddenFor(model => model.Id)
-		@Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        @Html.Partial("_CreateOrEdit", Model)
+
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                <button type="submit" value="Save" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+
     </fieldset>
 }
 

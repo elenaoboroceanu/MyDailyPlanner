@@ -63,5 +63,10 @@ namespace DailyPlanner.Repository
                 .Where(p => p.Date == date)
                 .OrderBy(p => p.StartTime);
         }
+
+        public DailyTask GetTasksIncludingActivityById(int id)
+        {
+            return AllIncluding(dailyTask => dailyTask.Activity).FirstOrDefault(p => p.Id == id);
+        }
     }
 }

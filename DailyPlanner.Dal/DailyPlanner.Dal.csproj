@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContexts\DailyPlannerDbContext.cs" />
+    <Compile Include="Migrations\201412031601208_InitialDBSeed.cs" />
+    <Compile Include="Migrations\201412031601208_InitialDBSeed.Designer.cs">
+      <DependentUpon>201412031601208_InitialDBSeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ContextHelpers.cs" />
@@ -63,6 +67,11 @@
       <Project>{65bd084a-6049-4377-a257-500fdf0ade8c}</Project>
       <Name>DailyPlanner.DomainClasses</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201412031601208_InitialDBSeed.resx">
+      <DependentUpon>201412031601208_InitialDBSeed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,65 +2,75 @@
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 @Html.AntiForgeryToken()
-<div class="editor-label">
-    @Html.LabelFor(model => model.Name)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Name)
-    @Html.ValidationMessageFor(model => model.Name)
-</div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Comment)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Comment)
-    @Html.ValidationMessageFor(model => model.Comment)
-</div>
+<div class="form-group">
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Date)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Date)
-    @Html.ValidationMessageFor(model => model.Date)
-</div>
+    @Html.LabelFor(model => model.Name, new { @class = "control-label col-xs-2" })
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.Duration)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Duration)
-    @Html.ValidationMessageFor(model => model.Duration)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.StartTime)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.StartTime)
-    @Html.ValidationMessageFor(model => model.StartTime)
-</div>
-
-<div class="editor-label">
-        @Html.LabelFor(model => model.DailyTaskStatus)
+    <div class="col-xs-10">
+        @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name)
     </div>
-    <div class="editor-field">
+</div>
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Comment, new { @class = "control-label col-xs-2" })
+
+    <div class="col-xs-10">
+        @Html.TextAreaFor(model => model.Comment, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Comment)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Date, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-10">
+        
+        @Html.EditorFor(model => model.Date, new { @class = "form-control datecontrol" })
+        @Html.ValidationMessageFor(model => model.Date)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Duration, new { @class = "control-label col-xs-2" })
+
+    <div class="col-xs-10">
+        @Html.EditorFor(model => model.Duration, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Duration)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.StartTime, new { @class = "control-label col-xs-2" })
+
+    <div class="col-xs-10">
+        @Html.EditorFor(model => model.StartTime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.StartTime)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DailyTaskStatus, new { @class = "control-label col-xs-2" })
+    <div class="col-xs-10">
         @Html.EnumDropDownListFor(model => model.DailyTaskStatus)
         @Html.ValidationMessageFor(model => model.DailyTaskStatus)
     </div>
-
-<div class="editor-label">
-    Activity
 </div>
-<div class="editor-field">
-    @Html.DropDownListFor(model => model.ActivityId,
-    ((IEnumerable<DailyPlanner.DomainClasses.Activity>)ViewBag.PossibleActivities).
-    Select(option => new SelectListItem 
-    {
-        Text = (option == null ? "None" : option.Name), 
-        Value = option.Id.ToString(),
-        Selected = (Model != null) && (option.Id == Model.ActivityId)
-    }), "Choose...")
-    @Html.ValidationMessageFor(model => model.ActivityId)
+
+<div class="form-group">
+    @Html.Label("Activity", new { @class = "control-label col-xs-2" })
+
+
+    <div class="col-xs-10">
+        @Html.DropDownListFor(model => model.ActivityId,
+            ((IEnumerable<DailyPlanner.DomainClasses.Activity>)ViewBag.PossibleActivities).
+                Select(option => new SelectListItem
+                {
+                    Text = (option == null ? "None" : option.Name),
+                    Value = option.Id.ToString(),
+                    Selected = (Model != null) && (option.Id == Model.ActivityId)
+                }), "Choose...")
+        @Html.ValidationMessageFor(model => model.ActivityId)
+    </div>
 </div>
