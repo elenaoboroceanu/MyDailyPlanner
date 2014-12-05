@@ -186,6 +186,8 @@
     <Compile Include="Controllers\FlashcardTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MealController.cs" />
+    <Compile Include="Controllers\PillController.cs" />
     <Compile Include="Controllers\PlannerController.cs" />
     <Compile Include="Controllers\ToyController.cs" />
     <Compile Include="Controllers\ToyTypeController.cs" />
@@ -397,6 +399,16 @@
     <Content Include="Views\DailyTask\_List.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Shared\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Meal\Create.cshtml" />
+    <Content Include="Views\Meal\Delete.cshtml" />
+    <Content Include="Views\Meal\Details.cshtml" />
+    <Content Include="Views\Meal\Edit.cshtml" />
+    <Content Include="Views\Meal\Index.cshtml" />
+    <Content Include="Views\Pill\Create.cshtml" />
+    <Content Include="Views\Pill\Delete.cshtml" />
+    <Content Include="Views\Pill\Details.cshtml" />
+    <Content Include="Views\Pill\Edit.cshtml" />
+    <Content Include="Views\Pill\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />

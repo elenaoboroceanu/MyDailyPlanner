@@ -58,8 +58,12 @@
     <Compile Include="Interfaces\IDailyTaskRepository.cs" />
     <Compile Include="Interfaces\IFlashcardRepository.cs" />
     <Compile Include="Interfaces\IFlashcardTypeRepository.cs" />
+    <Compile Include="Interfaces\IMealRepository.cs" />
+    <Compile Include="Interfaces\IPillRepository.cs" />
     <Compile Include="Interfaces\IToyRepository.cs" />
     <Compile Include="Interfaces\IToyTypeRepository.cs" />
+    <Compile Include="MealRepository.cs" />
+    <Compile Include="PillRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToyRepository.cs" />
     <Compile Include="ToyTypeRepository.cs" />

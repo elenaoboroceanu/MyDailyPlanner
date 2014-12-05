@@ -42,7 +42,9 @@ namespace DailyPlanner.DependencyResolution {
                 });
             For(typeof (DailyPlannerDbContext)).HttpContextScoped();
             For(typeof(ApplicationDbContext)).HttpContextScoped();
-           
+
+            For<IMealRepository>().Use<MealRepository>();
+            For<IPillRepository>().Use<PillRepository>();
 
             For<IToyTypeRepository>().Use<ToyTypeRepository>();
             For<IToyRepository>().Use<ToyRepository>();

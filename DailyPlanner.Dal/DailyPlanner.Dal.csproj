@@ -47,11 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContexts\DailyPlannerDbContext.cs" />
-    <Compile Include="Migrations\201412031601208_InitialDBSeed.cs" />
-    <Compile Include="Migrations\201412031601208_InitialDBSeed.Designer.cs">
-      <DependentUpon>201412031601208_InitialDBSeed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="EF_Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ContextHelpers.cs" />
     <Compile Include="Utilities\StateHelper.cs" />
@@ -69,9 +65,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412031601208_InitialDBSeed.resx">
-      <DependentUpon>201412031601208_InitialDBSeed.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Scripts\CreateTable_Meal.sql" />
+    <Content Include="Scripts\CreateTable_Pill.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,7 +17,7 @@ namespace DailyPlanner.Dal.Migrations
 
         protected override void Seed(DailyPlanner.Dal.DbContexts.DailyPlannerDbContext context)
         {
-            PopulateDatabase(context);
+            //PopulateDatabase(context);
         }
          private static void PopulateDatabase(DailyPlannerDbContext context)
         {

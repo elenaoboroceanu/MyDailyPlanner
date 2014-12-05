@@ -6,10 +6,14 @@
 
 @using (Html.BeginForm("Create", "ActivityType", FormMethod.Post, new { @class = "form-horizontal" }))
 {
-    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+  
 
     <fieldset>
         <legend>Create a new activity type</legend>
+        
+        @Html.ValidationSummary(true)
 
         @Html.Partial("_CreateOrEdit", Model)
 

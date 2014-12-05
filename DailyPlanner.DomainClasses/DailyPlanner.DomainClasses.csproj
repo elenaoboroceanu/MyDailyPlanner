@@ -74,11 +74,14 @@
     <Compile Include="Flashcard.cs" />
     <Compile Include="FlashcardType.cs" />
     <Compile Include="Interfaces\IObjectWithState.cs" />
+    <Compile Include="Meal.cs" />
+    <Compile Include="PIll.cs" />
     <Compile Include="Utilities\EnumState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Toy.cs" />
     <Compile Include="ToyType.cs" />
     <Compile Include="Utilities\EnumTaskStatus.cs" />
+    <Compile Include="Utilities\EnumUnitOfMeasure.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

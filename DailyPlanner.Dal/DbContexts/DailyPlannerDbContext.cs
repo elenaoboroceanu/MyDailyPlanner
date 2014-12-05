@@ -36,6 +36,9 @@ namespace DailyPlanner.Dal.DbContexts
 
         public DbSet<DailyTask> DailyTasks { get; set; }
 
+        public DbSet<Meal> Meals { get; set; }
+
+        public DbSet<Pill> Pills { get; set; }
         
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
