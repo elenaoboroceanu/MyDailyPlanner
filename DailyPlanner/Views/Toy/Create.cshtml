@@ -1,21 +1,28 @@
+@using DailyPlanner.DomainClasses
 @model DailyPlanner.DomainClasses.Toy
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+@using (Html.BeginForm("Create", "Toy", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    
+   
     <fieldset>
-        <legend>Toy</legend>
+        <legend>Create a new toy</legend>
+        
+        @Html.ValidationSummary(true)
 
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" value="Create" class="btn btn-primary btn-block" />
+            </div>
+        </div>
     </fieldset>
 }
 

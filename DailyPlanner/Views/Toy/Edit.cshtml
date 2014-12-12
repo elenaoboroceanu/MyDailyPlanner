@@ -4,19 +4,25 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+  
     <fieldset>
-        <legend>Toy</legend>
+        <legend>Update <i>@Model.Name</i> toy</legend>
+        
+        @Html.ValidationSummary(true)
 
         @Html.HiddenFor(model => model.Id)
-		@Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        @Html.Partial("_CreateOrEdit", Model)
+
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" value="Save" class="btn btn-primary btn-block" />
+            </div>
+        </div>
+
     </fieldset>
 }
 

@@ -5,18 +5,19 @@
 }
 
 @using (Html.BeginForm("Create", "Activity", FormMethod.Post, new { @class = "form-horizontal" })) {
-  
-      @Html.ValidationSummary(true)
-    
+     
     <fieldset>
-        
+
         <legend>Create a new activity</legend>
+        
+        @Html.ValidationSummary(true)
 
         @Html.Partial("_CreateOrEdit", Model)
 
         <div class="form-group">
-            <div class="col-xs-10">
-                <button type="submit" class="btn btn-primary btn-sm" value="Create">Create</button>
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <button type="submit" class="btn btn-primary btn-block" value="Create">Create</button>
             </div>
         </div>
     </fieldset>

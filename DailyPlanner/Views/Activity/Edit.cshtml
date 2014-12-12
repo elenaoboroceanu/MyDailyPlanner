@@ -7,17 +7,18 @@
 @using (Html.BeginForm("Edit", "Activity", FormMethod.Post, new { @class = "form-horizontal" })) {
    
      @Html.ValidationSummary(true)
-    
+
     <fieldset>
-        <legend>Update activity</legend>
+        <legend>Update <i>@Model.Name</i> activity</legend>
 
         @Html.HiddenFor(model => model.Id)
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
         <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-                <button type="submit" class="btn btn-primary"  value="Save" >Save</button>
-          </div>
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <button type="submit" class="btn btn-primary btn-block" value="Save">Save</button>
+            </div>
         </div>
     </fieldset>
 }

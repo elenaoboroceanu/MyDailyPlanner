@@ -4,18 +4,22 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+@using (Html.BeginForm("Create", "FlashcardType", FormMethod.Post, new { @class = "form-horizontal" }))
+{   
     <fieldset>
-        <legend>FlashcardType</legend>
+        
+        <legend>Create a new flashcard type</legend>
+        
+        @Html.ValidationSummary(true)
 
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" class="btn btn-primary btn-block" value="Create" />
+            </div>
+        </div>
     </fieldset>
 }
 

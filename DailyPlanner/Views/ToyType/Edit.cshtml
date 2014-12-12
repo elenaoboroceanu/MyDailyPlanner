@@ -4,19 +4,24 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+@using (Html.BeginForm("Edit", "ToyType", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+
     <fieldset>
-        <legend>ToyType</legend>
+        <legend>Update <i>@Model.Name</i> toy type</legend>
+
+        @Html.ValidationSummary(true)
 
         @Html.HiddenFor(model => model.Id)
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" class="btn btn-primary btn-block" value="Save" />
+            </div>
+        </div>
     </fieldset>
 }
 
