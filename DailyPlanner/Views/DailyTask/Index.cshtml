@@ -9,9 +9,9 @@
 <p>
     @Html.ActionLink("Create new task", "Create")
 </p>
-<p>
 
-    @using (Html.BeginForm("SearchByDate", "DailyTask"))
+
+    @using (Html.BeginForm("SearchByDate", "DailyTask", FormMethod.Post, new { @class = "form-inline" }))
     {
         @Html.AntiForgeryToken()
 
@@ -20,15 +20,24 @@
         {
             selectedDate = ViewBag.Date;
         }
-        <input type="date" name="date" id="date" value="@selectedDate" />
-        <input type="submit" value="Search by date" class="btn btn-primary" />
-    }
-</p>
 
+        <div class="input-group">
+
+            <input type="date" name="date" id="date" value="@selectedDate" class="form-control datecontrol " />
+            <span class="input-group-btn">
+                <input type="submit" value="Search by date" class="btn btn-primary " />
+            </span>
+
+        </div>
+    }
+
+<br />
+<hr />
+<br />
 @Html.Partial("_List")
-<br/>
-<hr/>
-<br/>
+<br />
+<hr />
+<br />
 
 <p>
     Total time for activities <span id="totalTimeMinutes"></span> minutes, meaning
@@ -40,7 +49,8 @@
 </p>
 
 @section scripts{
-    <script type="text/javascript" src="~/Scripts/CalculateTotalTime.js">    
+    <script type="text/javascript" src="~/Scripts/CalculateTotalTime.js">
+
 
     </script>
 
