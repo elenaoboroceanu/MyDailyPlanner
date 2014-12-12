@@ -1,70 +1,73 @@
 ﻿@model IEnumerable<DailyPlanner.DomainClasses.DailyTask>
 
+<div class="table-responsive">
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Comment
-            </th>
-            <th>
-                Start time
-            </th>
-            <th>
-                Duration
-            </th>
-            <th>
-                Date
-            </th>
-
-            <th>
-                ActivityType
-            </th>
-
-            <th>
-                Status
-            </th>
-            <th>
-                Commands
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-striped">
+        <thead>
             <tr>
+                <th class="col-sm-1">
+                    Name
+                </th>
+                <th class="col-sm-3">
+                    Comment
+                </th>
+                <th class="col-sm-1">
+                    Start time
+                </th>
+                <th class="col-sm-1">
+                    Duration
+                </th>
+                <th class="col-sm-1">
+                    Date
+                </th>
 
-                <td>
-                    @item.Name
-                </td>
-                <td>
-                    @item.Comment
-                </td>
-                <td>
-                    @item.StartTime.ToShortTimeString()
-                </td>
-                <td class="duration">
-                    @item.Duration
-                </td>
-                <td>
-                    @item.Date.ToShortDateString()
-                </td>
-                <td>
-                    @(item.Activity == null ? "None" : item.Activity.Name)
-                </td>
+                <th class="col-sm-2">
+                    ActivityType
+                </th>
 
-                <td>
-                    @item.DailyTaskStatus
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-xs" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
-                </td>
+                <th class="col-sm-1">
+                    Status
+                </th>
+                <th class="col-sm-2">
+                    Commands
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Comment
+                    </td>
+                    <td>
+                        @item.StartTime.ToShortTimeString()
+                    </td>
+                    <td class="duration">
+                        @item.Duration
+                    </td>
+                    <td>
+                        @item.Date.ToShortDateString()
+                    </td>
+                    <td>
+                        @(item.Activity == null ? "None" : item.Activity.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DailyTaskStatus)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-xs" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
