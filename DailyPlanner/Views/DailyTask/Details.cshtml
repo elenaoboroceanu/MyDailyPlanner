@@ -4,50 +4,25 @@
     ViewBag.Title = "Details";
 }
 
+<form class="form-horizontal">
 
+    <fieldset>
+        <legend> <i> @Model.Name </i> task details</legend>
 
-<fieldset>
-    <legend>@Model.Name task details</legend>
+        @Html.Partial("_DeleteOrDetails", Model)
 
-    <dl class="dl-horizontal">
-        <dt>
-            Name
-        </dt>
-        <dd>
-            @Model.Name
-        </dd>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
 
-        <dt>Description</dt>
-        <dd>@Model.Comment</dd>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-block" })
 
-        <dt>Date</dt>
-        <dd>
-            @Model.Date.ToShortDateString()
-        </dd>
-
-        <dt>Start time</dt>
-        <dd>@Model.StartTime.ToShortTimeString()</dd>
-
-        <dt>Duration</dt>
-        <dd>@Model.Duration</dd>
-
-
-
-        <dt>Activity</dt>
-        <dd>@((Model.Activity == null) ? "None" : Model.Activity.Name)</dd>
-
-    </dl>
-
-
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
-
+            </div>
         </div>
-    </div>
 
-</fieldset>
+    </fieldset>
+
+</form>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

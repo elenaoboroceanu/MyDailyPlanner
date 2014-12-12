@@ -4,46 +4,26 @@
     ViewBag.Title = "Delete";
 }
 
-<fieldset>
-    <legend>Delete daily task</legend>
-
-    <dl class="dl-horizontal">
-        <dt>
-            Name
-        </dt>
-        <dd>
-            @Model.Name
-        </dd>
-
-        <dt>Description</dt>
-        <dd>@Model.Comment</dd>
-
-        <dt>Date</dt>
-        <dd>
-            @Model.Date.ToShortDateString()
-        </dd>
-
-        <dt>Start time</dt>
-        <dd>@Model.StartTime.ToShortTimeString()</dd>
-
-        <dt>Duration</dt>
-        <dd>@Model.Duration</dd>
 
 
-
-        <dt>Activity</dt>
-        <dd>@((Model.Activity == null) ? "None" : Model.Activity.Name)</dd>
-
-    </dl>
-
-
-  </fieldset>
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Delete", "DailyTask", FormMethod.Post, new { @class = "form-horizontal" }))
+{
     @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+    <fieldset>
+        <legend>Delete <i>@Model.Name</i> daily task</legend>
+
+       @Html.Partial("_DeleteOrDetails", Model)
+
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" class="btn btn-primary btn-block" value="Delete" />
+            </div>
+        </div>
+    </fieldset>
 }
 
-
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

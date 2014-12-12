@@ -4,26 +4,25 @@
     ViewBag.Title = "Delete";
 }
 
-<fieldset>
-    <legend>Delete flashcard</legend>
+@using (Html.BeginForm("Delete", "Flashcard", FormMethod.Post, new { @class = "form-horizontal" }))
+{
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
+    <fieldset>
+        <legend>Delete flashcard</legend>
+        
+        @Html.Partial("_DeleteOrDetails", @Model)
+      
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" class="btn btn-primary btn-block" value="Delete" />
+            </div>
+        </div>
 
-    <div class="display-label">Description</div>
-    <div class="display-field">@Model.Description</div>
-
-    <div class="display-label">Image</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.Image).ToString()</div>
-
-    <div class="display-label">Type</div>
-    <div class="display-field">@(Model.Type == null ? "None" : Model.Type.Name)</div>
-</fieldset>
-@using (Html.BeginForm()) {
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    </fieldset>
 }
 
-
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+</p>

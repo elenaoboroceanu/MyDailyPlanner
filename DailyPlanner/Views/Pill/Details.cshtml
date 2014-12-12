@@ -4,60 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<fieldset>
-    <legend>@Model.Name medicine details</legend>
+<form class="form-horizontal">
 
+    <fieldset>
+        <legend>@Model.Name medicine details</legend>
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        @Html.Partial("_DeleteOrDetails", @Model)
+        
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitOfMeasure)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitOfMeasure)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Days)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Days)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Comment)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comment)
-        </dd>
-
-    </dl>
-</fieldset>
-
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        @Html.ActionLink("Edit medicine", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
-    </div>
-</div>
-
+    </fieldset>
+</form>
 
 <p>
     @Html.ActionLink("Back to List", "Index")

@@ -5,43 +5,23 @@
 }
 
 
-<fieldset>
-    <legend>@Model.Name meal details</legend>
+<form class="form-horizontal">
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <fieldset>
+        <legend>@Model.Name meal details</legend>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        @Html.Partial("_DeleteOrDetails", @Model)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Recipe)
-        </dt>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Recipe)
-        </dd>
+    </fieldset>
+</form>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Comment)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comment)
-        </dd>
-
-    </dl>
-</fieldset>
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-
-        @Html.ActionLink("Edit meal", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
-
-    </div>
-</div>
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>

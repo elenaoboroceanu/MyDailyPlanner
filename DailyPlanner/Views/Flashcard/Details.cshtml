@@ -4,25 +4,23 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<form class="form-horizontal">
 
-<fieldset>
-    <legend>Flashcard</legend>
+    <fieldset>
+        <legend><i> @Model.Name </i> flashcard details</legend>
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
+        @Html.Partial("_DeleteOrDetails", @Model)
 
-    <div class="display-label">Description</div>
-    <div class="display-field">@Model.Description</div>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
 
-    <div class="display-label">Image</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.Image).ToString()</div>
-
-    <div class="display-label">Type</div>
-    <div class="display-field">@(Model.Type == null ? "None" : Model.Type.Name)</div>
-</fieldset>
+    </fieldset>
+</form>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 

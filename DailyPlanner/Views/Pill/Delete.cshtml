@@ -5,63 +5,24 @@
 }
 
 
-<h3>Are you sure you want to delete this medicine?</h3>
-<br />
+@using (Html.BeginForm("Delete", "Pill", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
 
-<div>
+    <fieldset>
+        <legend>Delete medicine</legend>
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        @Html.Partial("_DeleteOrDetails", @Model)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitOfMeasure)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitOfMeasure)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Days)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Days)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Comment)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comment)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" />
-
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" class="btn btn-primary btn-block" value="Delete" />
+            </div>
         </div>
-    }
-</div>
-
-@Html.ActionLink("Back to List", "Index")
+    </fieldset>
+}
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

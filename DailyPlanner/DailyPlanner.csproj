@@ -411,6 +411,17 @@
     <Content Include="Views\Pill\Edit.cshtml" />
     <Content Include="Views\Pill\Index.cshtml" />
     <Content Include="Views\Home\_LayoutIndex.cshtml" />
+    <Content Include="Views\DailyTask\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\Activity\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\ActivityType\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\Flashcard\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\FlashcardType\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\Meal\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Meal\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\Pill\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Pill\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\Toy\_DeleteOrDetails.cshtml" />
+    <Content Include="Views\ToyType\_DeleteOrDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />

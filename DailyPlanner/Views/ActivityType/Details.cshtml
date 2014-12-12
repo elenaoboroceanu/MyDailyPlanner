@@ -5,26 +5,23 @@
 }
 
 <fieldset>
-    <legend>@Model.Name activity type details</legend>
+    <legend><i> @Model.Name </i> activity type details</legend>
 
-    <dl class="dl-horizontal">
-        <dt>
-            Name
-        </dt>
-        <dd>
-            @Model.Name
-        </dd>
+    <form class="form-horizontal">
 
-    </dl>
+        @Html.Partial("_DeleteOrDetails", @Model)
+
+
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-
-                @Html.ActionLink("Edit activity type", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
-
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                @Html.ActionLink("Edit activity type", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-block" })
             </div>
         </div>
-    
-</fieldset>
-    @Html.ActionLink("Back to List", "Index")
+    </form>
 
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
 

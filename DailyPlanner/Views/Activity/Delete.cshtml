@@ -3,30 +3,27 @@
 @{
     ViewBag.Title = "Delete";
 }
+@using (Html.BeginForm("Delete", "Activity", FormMethod.Post, new { @class = "form-horizontal" }))
+{
 
-<fieldset>
-    <legend>Delete activity</legend>
+    <fieldset>
+        <legend>Delete <i> @Model.Name </i> activity</legend>
 
-    <div class="display-label">Name</div>
-    <div class="display-field">@Model.Name</div>
+       @Html.Partial("_DeleteOrDetails", @Model)
 
-    <div class="display-label">Description</div>
-    <div class="display-field">@Model.Description</div>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                <input type="submit" class="btn btn-primary btn-block" value="Delete" />
+            </div>
+        </div>
 
-    <div class="display-label">ActivityType</div>
-    <div class="display-field">@(Model.ActivityType == null ? "None" : Model.ActivityType.Name)</div>
+    </fieldset>
 
-    <div class="display-label">Toys</div>
-    <div class="display-field">@(Model.Toys == null ? "None" : Model.Toys.Count.ToString())</div>
 
-    <div class="display-label">Flashcards</div>
-    <div class="display-field">@(Model.Flashcards == null ? "None" : Model.Flashcards.Count.ToString())</div>
-</fieldset>
-@using (Html.BeginForm()) {
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
 }
-
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
 

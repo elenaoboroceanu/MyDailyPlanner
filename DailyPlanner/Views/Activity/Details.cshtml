@@ -5,44 +5,24 @@
 }
 
 <fieldset>
-    <legend>@Model.Name activity details</legend>
+    <legend><i> @Model.Name </i> activity details</legend>
 
-    <dl class="dl-horizontal">
-        <dt>
-            Name
-        </dt>
-        <dd>
-            @Model.Name
-        </dd>
+    <form class="form-horizontal">
 
-        <dt>
-            Description
-        </dt>
-        <dd>@Model.Description</dd>
+        @Html.Partial("_DeleteOrDetails", @Model)
+        
 
-        <dt>
-            ActivityType
-        </dt>
-        <dd>@(Model.ActivityType == null ? "None" : Model.ActivityType.Name)</dd>
-
-        <dt>
-            Toys
-        </dt>
-        <dd>@(Model.Toys == null ? "None" : Model.Toys.Count.ToString())</dd>
-
-        <dt>
-            Flashcards
-        </dt>
-        <dd>@(Model.Flashcards == null ? "None" : Model.Flashcards.Count.ToString())</dd>
-    </dl>
+        <div class="form-group">
+            <div class="col-xs-5"></div>
+            <div class=" col-xs-2 text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-block" })
+            </div>
+        </div>
+    </form>
 </fieldset>
 
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-xs" })
-    </div>
-</div>
 
-@Html.ActionLink("Back to List", "Index")
-
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
 
