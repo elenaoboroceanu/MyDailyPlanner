@@ -38,6 +38,7 @@ namespace DailyPlanner.DomainClasses
         public int ActivityId { get; set; }
         public Activity Activity { get; set; }
 
+        [DisplayName("Task status")]
         public DailyTaskStatus DailyTaskStatus { get; set; }
 
         [NotMapped]
