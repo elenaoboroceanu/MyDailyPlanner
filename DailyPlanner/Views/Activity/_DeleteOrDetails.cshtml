@@ -1,10 +1,10 @@
 ﻿@model DailyPlanner.DomainClasses.Activity
 
 <div class="form-group">
-    <label for="@Model.Name" class="control-label col-xs-2">
+    <label for="@Model.Name" class="control-label col-xs-3">
         Name
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @Model.Name
         </p>
@@ -12,10 +12,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.Description" class="control-label col-xs-2">
+    <label for="@Model.Description" class="control-label col-xs-3">
         Description
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @Model.Description
         </p>
@@ -23,10 +23,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.ActivityType" class="control-label col-xs-2">
+    <label for="@Model.ActivityType" class="control-label col-xs-3">
         Activity type
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @(Model.ActivityType == null ? "None" : Model.ActivityType.Name)
         </p>
@@ -34,10 +34,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.Toys" class="control-label col-xs-2">
+    <label for="@Model.Toys" class="control-label col-xs-3">
         Toys
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @(Model.Toys == null ? "None" : Model.Toys.Count.ToString())
         </p>
@@ -45,10 +45,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.Flashcards" class="control-label col-xs-2">
+    <label for="@Model.Flashcards" class="control-label col-xs-3">
         Flashcards
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @(Model.Flashcards == null ? "None" : Model.Flashcards.Count.ToString())
         </p>

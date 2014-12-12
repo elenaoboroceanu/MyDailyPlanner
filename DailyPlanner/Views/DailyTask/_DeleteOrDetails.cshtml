@@ -2,10 +2,10 @@
     
 
 <div class="form-group">
-    <label for="@Model.Name" class="control-label col-xs-2">
+    <label for="@Model.Name" class="control-label col-xs-3">
         Name
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @Model.Name
         </p>
@@ -13,10 +13,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.Comment" class="control-label col-xs-2">
+    <label for="@Model.Comment" class="control-label col-xs-3">
         Description
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @Model.Comment
         </p>
@@ -24,10 +24,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.Date" class="control-label col-xs-2">
+    <label for="@Model.Date" class="control-label col-xs-3">
         Date
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @Model.Date.ToShortDateString()
         </p>
@@ -35,10 +35,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.StartTime" class="control-label col-xs-2">
+    <label for="@Model.StartTime" class="control-label col-xs-3">
         Start time
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @Model.StartTime.ToShortTimeString()
         </p>
@@ -46,10 +46,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.Duration" class="control-label col-xs-2">
+    <label for="@Model.Duration" class="control-label col-xs-3">
         Duration
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @Model.Duration
         </p>
@@ -57,10 +57,10 @@
 </div>
 
 <div class="form-group">
-    <label for="@Model.Activity" class="control-label col-xs-2">
+    <label for="@Model.Activity" class="control-label col-xs-3">
         Activity
     </label>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
         <p class="form-control-static">
             @((Model.Activity == null) ? "None" : Model.Activity.Name)
         </p>
