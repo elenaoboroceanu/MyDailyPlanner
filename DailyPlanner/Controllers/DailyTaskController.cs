@@ -9,6 +9,7 @@ namespace DailyPlanner.Controllers
 {
     public class DailyTaskController : Controller
     {
+        private const string TEMP_DATA_DATE_KEY = "Date";
         private readonly IDailyTaskRepository _dailyTaskRepository;
         private readonly IActivityRepository _activityRepository;
 
@@ -45,10 +46,18 @@ namespace DailyPlanner.Controllers
         [HttpGet]
         public ActionResult SearchByDate()
         {
+            DateTime dateTime = DateTime.Today;
+            
+            object dateTimeValue;
+            if (TempData.TryGetValue(TEMP_DATA_DATE_KEY, out dateTimeValue))
+            {
+                dateTime = (DateTime) dateTimeValue;
+            }
+
             var dailyTasksByDate = _dailyTaskRepository
-              .GetTasksIncludingActivitiesByDate(DateTime.Now.Date)
+              .GetTasksIncludingActivitiesByDate(dateTime)
               .ToList();
-            ViewBag.Date = DateTime.Now.ToString("yyyy-MM-dd");
+            ViewBag.Date = dateTime.ToString("yyyy-MM-dd");
             return View("Index", dailyTasksByDate);
         }
 
@@ -56,12 +65,18 @@ namespace DailyPlanner.Controllers
         [ValidateInput(false)]
         public JsonResult GetTotalTimeByDate(string date)
         {
+            
             DateTime dateTime = Convert.ToDateTime(date).Date;
-            var sumByDate = _dailyTaskRepository.All
-                .Where(p => p.Date == dateTime)
-                .Sum(p => p.Duration);
 
-            return Json(sumByDate);
+            var totalTime = _dailyTaskRepository
+                .All
+                .Where(p => p.Date == dateTime)
+                .Select(p=>p.Duration)
+                .DefaultIfEmpty(0)
+                .Sum();
+           
+
+            return Json(totalTime);
 
             //return date;
         }
@@ -95,7 +110,9 @@ namespace DailyPlanner.Controllers
             {
                 _dailyTaskRepository.InsertOrUpdate(dailyTask);
                 _dailyTaskRepository.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                TempData[TEMP_DATA_DATE_KEY] = dailyTask.Date;
+                return RedirectToAction("SearchByDate");
             }
             ViewBag.PossibleActivities = _activityRepository.All;
             return View();
@@ -126,7 +143,8 @@ namespace DailyPlanner.Controllers
             {
                 _dailyTaskRepository.InsertOrUpdate(dailyTask);
                 _dailyTaskRepository.Save();
-                return RedirectToAction("SearchByDate", new { date = dailyTask.Date });
+                TempData[TEMP_DATA_DATE_KEY] = dailyTask.Date;
+                return RedirectToAction("SearchByDate");                
             }
             // If the model is invalid, we must remain on the same page
             ViewBag.PossibleActivities = _activityRepository.All;

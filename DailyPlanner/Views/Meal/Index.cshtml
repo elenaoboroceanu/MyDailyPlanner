@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h3>Meals recipies</h3>
+<h3>Meals recipes</h3>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th class="col-md-6">
-                @Html.DisplayNameFor(model => model.Recipie)
+                @Html.DisplayNameFor(model => model.Recipe)
             </th>
             <th class="col-md-3">
                 @Html.DisplayNameFor(model => model.Comment)
@@ -32,7 +32,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Recipie)
+                    @Html.DisplayFor(modelItem => item.Recipe)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Comment)

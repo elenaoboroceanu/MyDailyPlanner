@@ -3,6 +3,7 @@ using System.Data.Entity.Migrations;
 
 using DailyPlanner.Dal.DbContexts;
 using DailyPlanner.DomainClasses;
+using DailyPlanner.DomainClasses.Utilities;
 
 namespace DailyPlanner.Dal.Migrations
 {
@@ -10,14 +11,14 @@ namespace DailyPlanner.Dal.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "DailyPlanner.Models.DailyPlannerDbContext";
       
         }
 
         protected override void Seed(DailyPlanner.Dal.DbContexts.DailyPlannerDbContext context)
         {
-            //PopulateDatabase(context);
+            PopulateDatabase(context);
         }
          private static void PopulateDatabase(DailyPlannerDbContext context)
         {
@@ -280,6 +281,81 @@ namespace DailyPlanner.Dal.Migrations
                 threadingActivity,
                 flashcardsBathActivity,
                 painting);
+
+             var smecta = new Pill()
+             {
+                 Name = "Smecta",
+                 Quantity = 1,
+                 Days = 4,
+                 UnitOfMeasure = UnitOfMeasure.Sachet,
+                 Comment =
+                     "When he has diarrhea, give two sachets in the first day and then one sachet every day for 3 days."
+             };
+             var enterol = new Pill()
+             {
+                 Name = "Enterol",
+                 Quantity = 1,
+                 Days = 10,
+                 UnitOfMeasure = UnitOfMeasure.Pill,
+                 Comment = "When he has diarrhea, give one pill per day for 10 days."
+             };
+             var paracetamol = new Pill()
+             {
+                 Name = "Paracetamol",
+                 Quantity = 4,
+                 Days = 5,
+                 UnitOfMeasure = UnitOfMeasure.Mills,
+                 Comment =
+                     "When he has fever more than 38.3 degrees Celsius, give 4-6 ml (Paraped or Calpol) every 4-6 hours. RECORD IN THE DIARY EVERY ADMINISTRATION! "
+             };
+             var ibuprofen = new Pill()
+             {
+                 Name = "Ibuprofen",
+                 Quantity = 2,
+                 Days = 5,
+                 UnitOfMeasure = UnitOfMeasure.Mills,
+                 Comment =
+                     "When he has fever more than 38.3 degrees Celsius, give 2.5 ml (Fenopine or Nurofen) every 6-8 hours. RECORD IN THE DIARY EVERY ADMINISTRATION!. If the fever is more than 39.2 degrees Celsius, give up to 5 ml, undress him and put wet socks and give him plenty of fluids!"
+             };
+             context.Pills.AddOrUpdate(p=>p.Name,
+                 smecta, enterol, paracetamol, ibuprofen);
+
+             var breakfastOddDays = new Meal()
+             {
+                 Name = "Breakfast - odd days",
+                 Recipe =
+                     "1 boiled egg + veg / rice, milk made out of 8 teaspoons of milk + 1 teaspoon of cream/butter/margarine",
+                 Comment = "Aim to give high proten high caloric food at the beginning of the day"
+             };
+
+             var breakfastEvenDays = new Meal()
+             {
+                 Name = "Breakfast - even days",
+                 Recipe =
+                     "Oat porridge: 8 teaspoons of milk, 2 tablespoons of porridge, 100 ml water, 1 teaspoon butter/margarine, 2 dried plums, 4 half walnuts, one teaspoon of coconut oil"
+
+             };
+
+             var snack = new Meal()
+             {
+                 Name = "Snack",
+                 Recipe = "Biscuits, 1 banana, walnuts, dried plums"
+             };
+
+             var lunch = new Meal()
+             {
+                 Name = "Lunch",
+                 Recipe = "Potato puree or pasta with chicken/fish/meat and cream/butter. Milk after lunch."
+             };
+
+             var dinner = new Meal()
+             {
+                 Name = "Dinner",
+                 Recipe =
+                     "Rice porridge: 8 teaspoons of milk, 2 tablespoons of boiled rice, apple puree or cooked apple, nuts and one teaspoon of coconut oil."
+             };
+             context.Meals.AddOrUpdate(p=>p.Name,
+                 breakfastEvenDays, breakfastOddDays, snack, lunch, dinner);
         }
     }
 }

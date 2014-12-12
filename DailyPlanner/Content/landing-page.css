@@ -31,7 +31,7 @@ h6 {
     /*padding-bottom: 50px;*/ /*Elena*/
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background: url(img/intro-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -89,7 +89,7 @@ h6 {
 }
 
 .content-section-a {
-    /*padding: 50px 0;*/ /*Elena*/
+    padding: 50px 0; /*Elena*/
     background-color: #f8f8f8;
 }
 

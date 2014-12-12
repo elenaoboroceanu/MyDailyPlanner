@@ -10,7 +10,7 @@ namespace DailyPlanner.DomainClasses
         public string Name { get; set; }
 
         [DataType(DataType.MultilineText)]
-        public string Recipie { get; set; }
+        public string Recipe { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Comment { get; set; }

@@ -15,7 +15,7 @@
     <AssemblyName>DailyPlanner</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -295,6 +295,7 @@
     <Content Include="Content\font-awesome-4.2.0\scss\_spinning.scss" />
     <Content Include="Content\font-awesome-4.2.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.2.0\scss\_variables.scss" />
+    <None Include="Properties\PublishProfiles\AzureVM.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\CalculateTotalTime.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
@@ -409,6 +410,7 @@
     <Content Include="Views\Pill\Details.cshtml" />
     <Content Include="Views\Pill\Edit.cshtml" />
     <Content Include="Views\Pill\Index.cshtml" />
+    <Content Include="Views\Home\_LayoutIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -456,7 +458,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>11528</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:11528/</IISUrl>
+          <IISUrl>http://localhost/DailyPlanner</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
