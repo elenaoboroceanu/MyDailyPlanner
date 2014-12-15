@@ -39,7 +39,8 @@ var successFunc = function (data) {
 };
 
 var errorFunc = function (xhr, status,error) {    
-    console.log("Error! => " + xhr.responseText +" Status:"+ status +" Error:"+ error);
+    console.log("Error! => " + xhr.responseText + " Status:" + status + " Error:" + error);
+    $("#totalTimeServer").html("0");
 };
 
 

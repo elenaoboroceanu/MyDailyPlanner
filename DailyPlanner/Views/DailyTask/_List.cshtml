@@ -8,7 +8,7 @@
                 <th class="col-sm-1">
                     Name
                 </th>
-                <th class="hidden-xs col-sm-1 col-lg-3">
+                <th class="hidden-xs hidden-sm hidden-md col-lg-3">
                     Comment
                 </th>
                 <th class="col-sm-2 col-lg-1">
@@ -41,10 +41,10 @@
                     <td>
                         @item.Name
                     </td>
-                    <td>
+                    <td class="hidden-xs hidden-sm hidden-md col-lg-3">
                         @item.Comment
-                    </td>
-                    <td>
+                     </td>
+                     <td>
                         @item.StartTime.ToShortTimeString()
                     </td>
                     <td class="duration">
