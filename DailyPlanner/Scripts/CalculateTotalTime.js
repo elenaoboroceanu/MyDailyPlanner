@@ -21,11 +21,11 @@
     // get total time from the server
     var date = $("#date").val();
     if (date.length > 0) {
-        var serviceUrl = '/DailyPlanner/DailyTask/GetTotalTimeByDate';
+
        
         $.ajax({
             type: "POST",
-            url: serviceUrl,
+            url: "GetTotalTimeByDate",
             data: JSON.stringify({ "date": date }),
             contentType: 'application/json; charset=utf-8',            
             success: successFunc,
